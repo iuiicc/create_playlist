@@ -1,5 +1,4 @@
 import os
-import sys
 
 def collect_song_paths(root_dir, extensions):
     song_paths = []
@@ -35,20 +34,17 @@ def create_m3u(playlist_name, song_paths, output_dir):
 
 # Main function
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python create_playlist.py <root_directory>")
-        sys.exit(1)
-    
-    root_dir = sys.argv[1]
-    
-    if not os.path.isdir(root_dir):
-        print(f"Error: {root_dir} is not a valid directory")
-        sys.exit(1)
-    
+    # Get the current working directory
+    root_dir = os.getcwd()
     playlist_name = os.path.basename(root_dir)
     extensions = ['.mp3', '.flac', '.wav', '.aac', '.m4a']  # Add more extensions as needed
     output_dir = root_dir  # Output M3U file in the same directory
 
+    # Delete existing M3U files
     delete_existing_m3u_files(root_dir)
+
+    # Collect song paths
     song_paths = collect_song_paths(root_dir, extensions)
+
+    # Create new M3U file
     create_m3u(playlist_name, song_paths, output_dir)
