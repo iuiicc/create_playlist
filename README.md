@@ -11,12 +11,6 @@
 
 ### 运行脚本
 
-#### 仅删除主/子目录目录中的 M3U 文件
 ```bash
 python3 /root/create_playlist.py -1
 ```
-
-#### 删除主/子目录中的 M3U 文件并在主目录创建新的 M3U 文件
-```bash
-python3 /root/create_playlist.py -1
-``` 
